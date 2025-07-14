@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build: .
+    container_name: life_insurance_backend
+    environment:
+      NODE_ENV: production
+      PORT: 8000
+      DB_HOST: ep-patient-dawn-ad5r454d-pooler.c-2.us-east-1.aws.neon.tech
+      DB_PORT: 5432
+      DB_NAME: neondb
+      DB_USER: neondb_owner
+      DB_PASSWORD: npg_5LOJyxr8IlRA
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge 
